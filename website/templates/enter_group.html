@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Enter Group - NoteSync{% endblock %}
+{% block title_page %}Enter in a group{% endblock %}
+{% block content %}
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="groupId">ID
+            <span class="info">
+                <span class="info_icon"><iconify-icon icon="ph:info-bold" id="infoIcon"></iconify-icon></span>
+                <div class="text_info text_info_hide" id="textInfo">
+                    If you don't have the ID, ask the group owner
+                </div>
+            </span>
+        </label>
+        <input type="text" id="groupId" name="groupId" placeholder="Insert ID">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Insert password">
+        <br>
+        <button type="submit" class="button_submit">Enter</button>
+    </form>
+    <br>
+</div>
+{% endblock %}

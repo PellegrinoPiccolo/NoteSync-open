@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block title %}{{ current_user.first_name }} - NoteSync{% endblock %}
+{% block content %}
+<h1 class="text_home">Account Settings</h1>
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="firstName">First Name</label>
+        <input type="firstName" id="firstName" name="firstName" placeholder="Insert your first name" value="{{ current_user.first_name }}">
+        <br>
+        <button type="submit" class="button_submit">Change First Name</button>
+    </form>
+    <br>
+</div>
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Insert your new email" value="{{ current_user.email }}">
+        <br>
+        <button type="submit" class="button_submit">Change Email</button>
+    </form>
+    <br>
+</div>
+<h1 class="text_home">Change Password</h1>
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="current_password">Your Current Password</label>
+        <input type="password" id="current_password" name="current_password" placeholder="Insert your current password">
+        <label for="password">New Password</label>
+        <input type="password" id="password" name="password" placeholder="Insert your new password">
+        <label for="password2">Confirm Password</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirm your new password">
+        <br>
+        <button type="submit" class="button_submit">Change Password</button>
+    </form>
+    <br>
+</div>
+<h1 class="text_home">Delete Account</h1>
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="password_for_delete">Your Password</label>
+        <input type="password" id="password_for_delete" name="password_for_delete" placeholder="Insert your password">
+        <label for="confirm_password_for_delete_account">Confirm Password</label>
+        <input type="password" id="confirm_password_for_delete_account" name="confirm_password_for_delete_account" placeholder="Confirm your password for delete account">
+        <br>
+        <button type="submit" class="delete_account_button button_submit">Delete Account</button>
+    </form>
+    <br>
+</div>
+<div class="container_logout_button">
+    <button class="logout_button" onclick="location.href='/logout'">Logout</button>
+</div>
+{% endblock %}

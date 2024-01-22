@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}{{ note.title }} - NoteSync{% endblock %}
+{% block content %}
+<div class="textNoteRead">
+    <h1 class="title_home">{{ note.title }}</h1>
+    <span id="textNote">{{ note.data | safe}}</span>
+    <div class="button_top">
+    <button class="copy_button_note" onclick="copyTextNote('textNote')" title="Copy text on clipboard"><iconify-icon icon="fluent:note-48-regular"></iconify-icon></button>
+    <button id="pulsanteStampa" class="copy_button_note" style="position:relative;right:4.8em;" title="Print note"><iconify-icon icon="fluent:print-48-filled"></iconify-icon></button>
+    {% if note.user_id == current_user.id %}
+    <button onclick="deleteNote({{ note.id }})" class="delete_button_note" title="Delete note"><iconify-icon icon="mingcute:delete-line" style="color: #b60000;"></iconify-icon></button>
+    {% endif %}
+    </div>
+    {% if note.user_id == current_user.id %}
+    <div class="center_button">
+        <button class="mod_note_read" onclick="location.href='/mod-note/{{ note.id }}'">Mod Note</button>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

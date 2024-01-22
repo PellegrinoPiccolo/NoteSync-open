@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}My Groups - NoteSync{% endblock %} {% block groups_link %}class="active"{% endblock %}
+{% block title_page %}My Groups{% endblock %}
+{% block content %}
+<div class="button_top">
+    <button class="create_button" onclick="location.href='/new-group'">Create Group +</button>
+    <button class="create_button" onclick="location.href='/enter-group'">Enter Group <span style="position: relative;top:.2em"><iconify-icon icon="mdi:location-enter"></iconify-icon></span></button>
+</div>
+<div class="group_container">
+{% for group in current_user.groups %}
+    <div class="group_section">
+        <div class="open_section_group" onclick="location.href='/group/{{ group.id }}'"></div>
+        <div class="button_section">
+            <button class="un_button_group" onclick="location.href='/members-group/{{ group.id }}'" title="members"><iconify-icon icon="fluent:people-24-filled"></iconify-icon></button>
+        {% if group.creator.id == current_user.id %}
+            <button class="mod_button_group" onclick="location.href='/mod-group/{{ group.id }}'"><iconify-icon icon="ic:sharp-mode-edit"></iconify-icon></button>
+            <button class="un_button_group" onclick="deleteGroup({{ group.id }})" title="Mod group"><iconify-icon icon="mingcute:delete-line" style="color: #b60000;"></iconify-icon></button>
+        {% else %}
+            <button class="un_button_group" title="Leave group" onclick="leaveGroup({{ group.id }})"><iconify-icon icon="iconamoon:exit-light" style="color: #b60000;"></iconify-icon></button>
+        {% endif %}
+        </div>
+        <h1 class="title_group">{{ group.name }}</h1>
+        <p class="description_group">{{ group.description }}</p>
+        <p class="creator_group_name">Created by: {{ group.creator.first_name }}</p>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

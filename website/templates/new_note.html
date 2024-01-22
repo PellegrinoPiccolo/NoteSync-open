@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %}Create new note - NoteSync{% endblock %}
+{% block title_page %}Create New Note{% endblock %}
+{% block content %}
+<div class="form_section">
+    <form action="" method="POST">
+        {% if groupId %}
+        <input type="hidden" name="groupId" id="groupId" value="{{ groupId }}">
+        {% endif %}
+        {% if folderId %}
+        <input type="hidden" name="folderId" id="folderId" value="{{ folderId }}">
+        {% endif %}
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="Insert title of your note" class="input_title_note">
+        <label for="data">Text</label>
+        {% with text = get_flashed_messages(with_categories=true) %}
+            {% if text %}
+                {% for category, message in text %}
+                {% if category == 'text' %}
+                    <textarea name="data" id="editor" cols="30" rows="10" placeholder="Insert text of your note" class="textarea_text_note">
+                        {{ message }}
+                    </textarea>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if not text %}
+                <textarea name="data" id="editor" cols="30" rows="10" placeholder="Insert text of your note" class="textarea_text_note"></textarea>
+            {% endif %}
+        {% endwith %}
+        <br>
+        <br>
+        <button type="submit" class="button_submit">Create note</button>
+    </form>
+</div>
+{% endblock %} 

@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Sign Up - NoteSync{% endblock %}
+{% block content %}
+<h1 class="text_home">Sign Up</h1>
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Insert your email">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Insert your first name">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Insert your password">
+        <label for="password2">Confirm Password</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirm your password">
+        <br>
+        <button type="submit" class="button_submit">Sign Up</button>
+    </form>
+    <br>
+    <h1 class="title_home">If you have account <span onclick="location.href='/login'" style="text-decoration:underline;color:rgb(0, 190, 149);cursor:pointer;">Login</span></h1>
+</div>
+{% endblock %}

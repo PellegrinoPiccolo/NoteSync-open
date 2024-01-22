@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}{{ group.name }} Members - NoteSync{% endblock %}
+{% block title_page %}{{ group.name }} Members{% endblock %}
+{% block content %}
+<div class="members_container">
+    {% for user in group.users %}
+    {% if not user.id == current_user.id %}
+    <div class="member_container">
+        {% if group.creator_id == current_user.id %}
+        <button class="remove_user" onclick="removeUser({{ group.id }}, {{ user.id }})" title="Eject User"><iconify-icon icon="mingcute:user-remove-fill" style="color: #b60000;"></iconify-icon></button>
+        {% endif %}
+        <p class="user_name"><iconify-icon icon="ion:person"></iconify-icon> - {{ user.first_name }} </p>
+        <p class="email_user" onclick="windows.open('mailto:{{ user.email }}')"><iconify-icon icon="iconamoon:email-fill"></iconify-icon> - {{ user.email }}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %} 

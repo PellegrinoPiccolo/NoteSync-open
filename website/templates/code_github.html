@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Code On Github - NoteSync{% endblock %} {% block contacts_link %}class="active"{% endblock %}
+{% block content %}
+<br>
+<h1 class="title_home">You can view the code in my github - <span class="link_github" onclick="window.open('https://github.com/PellegrinoPiccolo')">@PellegrinoPiccolo</span></h1>
+<h1 class="title_home">Or click here</h1>
+<div class="icon_section">
+    <button class="github_button" onclick="window.open('')"><iconify-icon icon="devicon:github"></iconify-icon></button>
+</div>
+<br>
+<br>
+<form action="https://www.paypal.com/donate" method="post" target="_top" align="center">
+    <input type="hidden" name="hosted_button_id" value="MMAM5KWKPGVZ8" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_IT/i/scr/pixel.gif" width="1" height="1" />
+</form>    
+{% endblock %}

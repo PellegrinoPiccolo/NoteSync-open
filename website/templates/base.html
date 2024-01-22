@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Import Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Import Trumbowyg -->
+    <script src="{{ url_for('static', filename='trumbowyg/dist/trumbowyg.min.js')}}"></script>
+    <link rel="stylesheet" href="/static/trumbowyg/dist/ui/trumbowyg.min.css">
+    
+    <!-- Import Trumbowyg plugins CSS... -->
+    <link rel="stylesheet" href="/static/trumbowyg/dist/plugins/giphy/ui/trumbowyg.giphy.min.css">
+    <link rel="stylesheet" href="/static/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css">
+    <link rel="stylesheet" href="/static/trumbowyg/dist/plugins/table/ui/trumbowyg.table.min.css">
+
+    <!-- Import Trumbowyg plugins... -->
+    <script src="{{ url_for('static', filename='trumbowyg/dist/plugins/upload/trumbowyg.cleanpaste.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='trumbowyg/dist/plugins/resizimg/trumbowyg.resizimg.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='trumbowyg/dist/plugins/history/trumbowyg.history.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='trumbowyg/dist/plugins/giphy/trumbowyg.giphy.min.js')}}"></script>
+    <script src="//rawcdn.githack.com/RickStrahl/jquery-resizable/0.35/dist/jquery-resizable.min.js"></script>
+
+    <title>{% block title %}NoteSync{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <h1 onclick="location.href='/'">NoteSync</h1>
+        <div class="link_section" id="linkSection">
+            <div class="topMenu">
+                <h1>NoteSync</h1>
+                <span onclick="closeMenu(document.getElementById('linkSection'))">&times;</span>
+            </div>
+            <a href="/" {% block home_link %}{% endblock %}>Home</a>
+            <a href="/my-notes" {% block notes_link %}{% endblock %}>My Notes</a>
+            <a href="/my-groups" {% block groups_link %}{% endblock %}>Groups</a>
+            <a href="/code-github" {% block contacts_link %}{% endblock %}>Github</a>
+        </div>
+        <div class="button_section">
+            <iconify-icon icon="pepicons-print:menu" onclick="openMenu(document.getElementById('linkSection'))"></iconify-icon>
+            <button 
+                {% if not current_user %}
+                onclick="location.href='/login'"
+                {% else %}
+                onclick="location.href='/account-setting'"
+                {% endif %}
+            >
+                {% if current_user.is_authenticated %}
+                <span>{{ current_user.first_name }}</span>
+                {% else %}
+                <span>{{ "Login" }}</span>
+                {% endif %}
+            </button>
+        </div>
+    </nav>
+    <div class="notification">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert alert_red" id="alert">
+                    {{ message }}
+                    <button class="close_button" onclick="closeAlert()">
+                        &times;
+                    </button>
+                </div>
+            {% endif %}
+            {% if category == 'success' %}
+                <div class="alert alert_green" id="alert">
+                    {{ message }}
+                    <button class="close_button" onclick="closeAlert()">
+                        &times;
+                    </button>
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %} 
+        {% endwith %}
+    </div>
+    <div class="container">
+    <h1 class="title_home">{% block title_page %}{% endblock %}</h1>
+    {% block content %}
+    {% endblock %}
+    </div>
+    <footer>
+
+    </footer>
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+    <script>
+        $('#editor').trumbowyg({
+            btns: [
+                ['historyUndo', 'historyRedo'],
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['foreColor', 'backColor'],
+                ['giphy'],
+                ['fullscreen'],
+            ],
+            plugins: {
+                giphy: {
+                    apiKey: 'JESkvCDETQDpIcTGdc1Pevf4YYQyAbJ1'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

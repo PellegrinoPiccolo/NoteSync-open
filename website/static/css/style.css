@@ -1,0 +1,808 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Stili specifici per la stampa */
+@media print {
+  body, body * {
+    visibility: hidden;
+  }
+  #textNote, #textNote *, .title_home {
+    visibility: visible;
+  }
+  #textNote, #textNote {
+    margin-top: -1em;
+  }
+  .title_home {
+    margin-top: -2.4em;
+  }
+  @page {
+    margin: 4em 10% 4em 10% !important;
+  }
+  /* Aggiungi stili per la stampa */
+}
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 94%;
+  padding: 0.4em 3%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 1px 10px 10px rgba(128, 128, 128, 0.514);
+  z-index: 98 !important;
+}
+nav h1 {
+  font-family: "Kaushan Script", cursive;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-size: 33px;
+  cursor: pointer;
+}
+nav .link_section {
+  position: relative;
+  top: 2em;
+}
+nav .link_section .topMenu {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+nav .link_section a {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  margin-left: 0.4em;
+  text-decoration: none;
+  color: black;
+}
+nav .link_section a:hover {
+  text-decoration: underline;
+}
+nav .link_section .active {
+  text-decoration: underline;
+}
+nav .button_section {
+  display: flex;
+  justify-content: space-between;
+}
+nav .button_section iconify-icon {
+  font-size: 40px;
+  position: relative;
+  top: 0.7em;
+  right: 0.4em;
+  opacity: 0;
+  display: none;
+}
+nav .button_section button {
+  background-color: transparent;
+  width: auto;
+  height: 48px;
+  padding: 0.1em 1em;
+  position: relative;
+  top: 1em;
+  cursor: pointer;
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  border-radius: 4px;
+}
+
+.notification .alert {
+  width: 90%;
+  padding: 0.5em 5%;
+  margin: 0;
+  position: fixed;
+  top: 5.48em;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 21px;
+  font-family: "Kaushan Script", cursive;
+  z-index: 99;
+  border-radius: 4px;
+}
+.notification .alert_red {
+  background: rgb(252, 93, 93);
+}
+.notification .alert_green {
+  background: rgb(0, 190, 149);
+}
+.notification button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.container {
+  margin-top: 11em;
+  padding: 0 2em 4em 2em;
+  position: relative;
+}
+.container .section_home {
+  display: flex;
+  justify-content: space-between;
+}
+.container .section_home .first_section {
+  width: 80%;
+  padding-top: 1.8em;
+  margin: 0 10%;
+}
+.container .section_home .second_section {
+  width: 100%;
+}
+.container .section_home .second_section img {
+  width: 70%;
+  margin: 1em 15%;
+  user-select: none;
+  -drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+.container .title_home {
+  font-family: "Caveat", cursive;
+  text-align: center;
+  font-size: 38px;
+  word-wrap: break-word;
+}
+.container .title_home .link_github {
+  cursor: pointer;
+}
+.container .title_home .link_github:hover {
+  text-decoration: underline;
+}
+.container .groupId {
+  color: rgb(0, 190, 149);
+}
+.container .info {
+  position: relative;
+}
+.container .info .info_icon {
+  position: relative;
+  top: 0.3em;
+  left: 0.4em;
+  cursor: pointer;
+  font-size: 28px;
+}
+.container .info .text_info {
+  position: absolute;
+  left: -3.4em;
+  font-size: 22px;
+  width: 10em;
+  background: white;
+  border: 1px solid transparent;
+  z-index: 90;
+  padding: 0.4em;
+  border-radius: 14px;
+  box-shadow: 10px 10px 38px rgba(128, 128, 128, 0.796);
+  transition: 0.4s;
+}
+.container .info .text_info_hide {
+  top: 2.18em;
+  opacity: 0;
+  visibility: hidden;
+}
+.container .info .text_info_active {
+  top: 2.5em;
+  opacity: 1;
+  visibility: visible;
+}
+.container .text_home {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+}
+.container .link_home {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.container .link_home:hover {
+  text-decoration: underline;
+}
+.container .form_section {
+  width: 80%;
+  margin: 0 10%;
+}
+.container .form_section form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.container .form_section form label {
+  font-size: 30px;
+  font-family: "Caveat", cursive !important;
+}
+.container .form_section form input, .container .form_section form textarea {
+  margin: 0.4em 0 1.3em 0;
+  font-size: 28px;
+  padding: 0.4em 0.4em;
+  border-radius: 4px;
+  border: none;
+  border: 2px solid rgba(128, 128, 128, 0.459);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container .form_section form .input_title_note {
+  font-family: "Kaushan Script", cursive !important;
+}
+.container .form_section form .textarea_text_note {
+  font-family: "Caveat", cursive !important;
+}
+.container .form_section form input:focus, .container .form_section form textarea:focus {
+  border-color: rgb(0, 190, 149);
+  outline: 2px solid rgb(0, 190, 149);
+}
+.container .form_section form .button_submit {
+  width: 6.8em;
+  position: absolute;
+  right: 0;
+  bottom: -1.4em;
+  font-size: 24px;
+  background-color: rgb(0, 190, 149);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: white;
+  padding: 0.14em 0.4em;
+  cursor: pointer;
+}
+.container .form_section form .delete_account_button {
+  background: rgb(131, 0, 0) !important;
+}
+.container .button_top {
+  position: absolute;
+  top: 0.4em;
+  right: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6em;
+}
+.container .button_top .create_button {
+  background-color: rgb(0, 190, 149);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: 0.8s;
+}
+.container .button_top .create_button:hover, .container .button_top .del_button:hover {
+  transform: scale(1.1);
+}
+.container .button_top .del_button {
+  background: transparent;
+  border: 1px transparent solid;
+  font-size: 28px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.container .note_container {
+  position: relative;
+  top: 4em;
+  width: 100%;
+}
+.container .note_container .click_section_open_note {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84%;
+  height: 100%;
+}
+.container .note_container .note_section {
+  position: relative;
+  border: 1px solid transparent;
+  overflow: hidden;
+  margin: 0 5% 3em 5%;
+  border-radius: 14px;
+  width: 80%;
+  padding: 1em 5% 2.8em 5% !important;
+  box-shadow: 10px 10px 38px rgba(128, 128, 128, 0.796);
+  transition: 0.2s;
+  cursor: pointer;
+  /*.close_button_note{
+      top:.2em;
+      right:.4em;
+      //color:rgb(182, 0, 0);
+  }
+  .read_button_note{
+      top:.2em;
+      right:2em;
+  }
+  .modify_button_note{
+      top:.2em;
+      right:3.5em;
+  }*/
+}
+.container .note_container .note_section .title_note {
+  font-family: "Kaushan Script", cursive;
+  font-size: 32px;
+}
+.container .note_container .note_section .text_note {
+  word-wrap: break-word !important;
+  width: 88% !important;
+  margin: 0 12% 0.2em 0 !important;
+  overflow: hidden;
+  max-height: 15em;
+}
+.container .note_container .note_section .date_note {
+  position: absolute;
+  bottom: 0.2em;
+  right: 2em;
+  font-family: "Kaushan Script", cursive;
+}
+.container .note_container .note_section .creator_name {
+  color: rgb(0, 190, 149);
+}
+.container .note_container .note_section .icon_section {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  display: flex;
+  justify-content: space-between;
+}
+.container .note_container .note_section .icon_section .close_button_note, .container .note_container .note_section .icon_section .modify_button_note, .container .note_container .note_section .icon_section .read_button_note {
+  background-color: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+.container .note_container .note_section:hover {
+  box-shadow: none;
+  border: 1px solid rgba(128, 128, 128, 0.132);
+}
+.container .icon_section {
+  display: flex;
+  justify-content: center;
+}
+.container .icon_section .github_button {
+  display: block;
+  background: none;
+  font-size: 49px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.container .icon_section .github_button:hover {
+  transform: scale(1.3);
+}
+.container .container_logout_button {
+  display: flex;
+  justify-content: center;
+}
+.container .container_logout_button .logout_button {
+  background: rgb(131, 0, 0);
+  border: 1px solid transparent;
+  color: white;
+  margin-top: 4em;
+  font-size: 28px;
+  padding: 0.3em 0.8em;
+  border-radius: 9px;
+  cursor: pointer;
+  margin-left: 1.8em;
+}
+.container .textNoteRead {
+  position: relative;
+  display: block;
+  padding-top: 0.4em;
+}
+.container .textNoteRead .copy_button_note, .container .textNoteRead .delete_button_note {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.container .textNoteRead .delete_button_note {
+  right: 0.8em;
+  font-size: 30px;
+  top: 0.1em;
+}
+.container .textNoteRead .copy_button_note {
+  font-size: 28px;
+  right: 2.8em;
+  top: 0.2em;
+}
+.container .textNoteRead .center_button {
+  display: flex;
+  justify-content: center;
+}
+.container .textNoteRead .center_button .mod_note_read {
+  background: rgb(0, 190, 149);
+  border: 1px transparent solid;
+  border-radius: 8px;
+  color: white;
+  font-size: 28px;
+  padding: 0.2em 0.4em;
+  margin-top: 1.8em;
+  cursor: pointer;
+}
+.container .group_container {
+  width: 80%;
+  position: relative;
+  top: 4em;
+  margin: 0 10%;
+}
+.container .group_container .group_section {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 1em 2em;
+  box-shadow: 10px 10px 38px rgba(128, 128, 128, 0.796);
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 0 0.4em 3em 0.4em;
+  position: relative;
+  word-break: break-all;
+  /*.un_button_group{
+      top:.5em;
+      right:.2em;
+  }
+  .mod_button_group{
+      top:.5em;
+      right:1.4em;
+  }*/
+}
+.container .group_container .group_section .open_section_group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 88%;
+  height: 100%;
+}
+.container .group_container .group_section .title_group {
+  text-align: left;
+  font-family: "Caveat", cursive;
+  margin: 0;
+}
+.container .group_container .group_section .description_group {
+  font-family: "Caveat", cursive !important;
+  font-size: 28px;
+  margin: 0.4em 0 0.8em 0;
+  max-width: 88%;
+}
+.container .group_container .group_section .creator_group_name {
+  text-align: right;
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+}
+.container .group_container .group_section .button_section {
+  position: absolute;
+  top: 0.5em;
+  right: 0.2em;
+  display: flex;
+  justify-content: space-between;
+}
+.container .group_container .group_section .button_section .un_button_group, .container .group_container .group_section .button_section .mod_button_group {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+.container .group_container .group_section:hover {
+  box-shadow: none;
+  border: 1px solid rgba(128, 128, 128, 0.132);
+}
+.container .members_container {
+  width: 30%;
+  margin: 3em 35% 0 35%;
+}
+.container .members_container .member_container {
+  width: 80%;
+  height: auto;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: 10px 10px 38px rgba(128, 128, 128, 0.796);
+  margin: 2.8em 0;
+  padding: 2em 10%;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+.container .members_container .member_container .user_name, .container .members_container .member_container .email_user {
+  font-size: 28px;
+}
+.container .members_container .member_container .user_name iconify-icon, .container .members_container .member_container .email_user iconify-icon {
+  position: relative;
+  top: 0.25em;
+}
+.container .members_container .member_container .email_user:hover {
+  text-decoration: underline;
+}
+.container .members_container .member_container .remove_user {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+.container .members_container .member_container:hover {
+  box-shadow: none;
+  border: 1px solid rgba(128, 128, 128, 0.132);
+}
+.container .form_folder_container svg {
+  display: block;
+  margin: auto;
+}
+.container .form_folder_container form input {
+  display: block;
+  margin: auto;
+  font-family: "Caveat", cursive;
+  padding: 0.2em 0.8em;
+  font-size: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(128, 128, 128, 0.507);
+}
+.container .form_folder_container form button {
+  display: block;
+  margin: auto;
+  color: white;
+  background-color: rgb(0, 190, 149);
+  font-size: 24px;
+  padding: 0.2em 0.4em;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.container .folder_carousel {
+  cursor: pointer;
+  transition: 0.4s;
+}
+.container .folder_carousel svg {
+  margin: auto;
+  display: block;
+}
+.container .folder_carousel .name {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  margin-top: 0;
+  word-break: break-all;
+  max-height: 1.8em;
+}
+.container .folder_carousel:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 1000px) {
+  nav h1 {
+    font-size: 23px;
+  }
+  nav .link_section {
+    translate: -100%;
+    position: absolute;
+    width: 90%;
+    height: 100vh;
+    z-index: 99 !important;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    padding: 0 5%;
+    transition: 0.4s;
+  }
+  nav .link_section .topMenu {
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    visibility: visible;
+  }
+  nav .link_section .topMenu span {
+    font-size: 48px;
+    position: relative;
+    top: 0.18em;
+  }
+  nav .link_section a {
+    display: block;
+    position: relative;
+    top: 4em;
+  }
+  nav .button_section iconify-icon {
+    display: block;
+    opacity: 1;
+    font-size: 38px;
+    top: 0.48em;
+  }
+  nav .button_section button {
+    font-size: 18px;
+  }
+  .notification .alert {
+    top: 5.8em;
+    font-size: 14px;
+    z-index: 95 !important;
+  }
+  .container {
+    margin-top: 8em;
+  }
+  .container .section_home {
+    flex-direction: column;
+  }
+  .container .section_home .first_section {
+    padding: 0;
+  }
+  .container .section_home .first_section .text_home {
+    font-size: 18px;
+  }
+  .container .form_section {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .container .form_section form {
+    width: 100%;
+  }
+  .container .form_section form label {
+    font-size: 28px;
+  }
+  .container .form_section form input, .container .form_section form textarea {
+    font-size: 18px;
+  }
+  .container .form_section form .button_submit {
+    font-size: 18px;
+  }
+  .container .button_top {
+    position: relative;
+    top: 0;
+    right: 0;
+    justify-content: center;
+  }
+  .container .button_top .create_button {
+    font-size: 16px;
+  }
+  .container .title_home {
+    font-size: 28px;
+  }
+  .container .note_container {
+    top: 4em;
+    width: 100%;
+  }
+  .container .note_container .click_section_open_note {
+    top: 10%;
+    width: 100%;
+    height: 90%;
+  }
+  .container .note_container .note_section {
+    margin: 0 0 3em 0;
+    width: 94%;
+    padding: 0.8em 3% 2.3em 3%;
+  }
+  .container .note_container .note_section .title_note {
+    font-size: 20px;
+    width: 40%;
+    margin: 0 60% 0 0;
+    word-wrap: break-word;
+  }
+  .container .note_container .note_section .text_note {
+    width: 94% !important;
+    margin: 0 6% 0.2em 0 !important;
+  }
+  .container .note_container .note_section .date_note {
+    font-size: 10px;
+  }
+  .container .note_container .note_section .creator_name {
+    color: rgb(0, 190, 149);
+  }
+  .container .note_container .note_section .icon_section {
+    top: 0.4em;
+  }
+  .container .note_container .note_section .icon_section .close_button_note, .container .note_container .note_section .icon_section .modify_button_note, .container .note_container .note_section .icon_section .read_button_note {
+    font-size: 20px;
+  }
+  .container .textNoteRead .delete_button_note {
+    right: -0.5em;
+    font-size: 28px;
+    top: 0.1em;
+  }
+  .container .textNoteRead .copy_button_note {
+    font-size: 28px;
+    top: 0.18em;
+    right: 1em;
+  }
+  .container .textNoteRead .center_button .mod_note_read {
+    font-size: 18px;
+  }
+  .container .group_container {
+    width: 100%;
+    margin: 0;
+  }
+  .container .group_container .group_section {
+    width: 94%;
+    padding: 1em 3%;
+    margin: 0 0.4em 3em 0.4em;
+  }
+  .container .group_container .group_section .open_section_group {
+    top: 10%;
+    left: 0;
+    width: 88%;
+    height: 90%;
+  }
+  .container .group_container .group_section .title_group {
+    margin: 0;
+    font-size: 20px;
+  }
+  .container .group_container .group_section .description_group {
+    font-size: 18px;
+    margin: 0.4em 0 0.8em 0;
+    max-width: 88%;
+  }
+  .container .group_container .group_section .creator_group_name {
+    font-size: 14px;
+  }
+  .container .group_container .group_section .button_section {
+    top: 0.5em;
+    right: 0.2em;
+  }
+  .container .group_container .group_section .button_section .un_button_group, .container .group_container .group_section .button_section .mod_button_group {
+    font-size: 20px;
+  }
+  .container .members_container {
+    width: 100%;
+    margin: 3em 0 0 0;
+  }
+  .container .members_container .member_container {
+    width: 90%;
+    margin: 2.8em 0;
+    padding: 2em 5%;
+  }
+  .container .members_container .member_container .user_name, .container .members_container .member_container .email_user {
+    font-size: 18px;
+  }
+  .container .members_container .member_container .remove_user {
+    font-size: 28px;
+  }
+  .container .form_folder_container svg {
+    display: block;
+    margin: auto;
+  }
+  .container .form_folder_container form input {
+    display: block;
+    margin: auto;
+    font-family: "Caveat", cursive;
+    padding: 0.2em 0.8em;
+    font-size: 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.507);
+  }
+  .container .form_folder_container form button {
+    display: block;
+    margin: auto;
+    color: white;
+    background-color: rgb(0, 190, 149);
+    font-size: 24px;
+    padding: 0.2em 0.4em;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .container .folder_carousel {
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .container .folder_carousel svg {
+    margin: auto;
+    display: block;
+    width: 60px !important;
+  }
+  .container .folder_carousel .name {
+    max-width: 4.8em;
+    position: relative;
+    top: -1.8em;
+    left: 0.8em;
+    max-height: 0.8em;
+    font-size: 21px;
+  }
+  .container .folder_carousel:hover {
+    transform: scale(1.1);
+  }
+}
+.link_menu_active {
+  translate: 0% !important;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}{{ note.title }} - NoteSync{% endblock %}
+{% block content %}
+<div class="form_section">
+    <form action="" method="POST">
+        <input type="hidden" name="noteId" value="{{ note.id }}">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="Insert title of your note" class="input_title_note" value="{{ note.title }}">
+        <label for="data">Text</label>
+        {% with text = get_flashed_messages(with_categories=true) %}
+            {% if text %}
+                {% for category, message in text %}
+                {% if category == 'text' %}
+                    <textarea name="data" id="editor" cols="30" rows="10" placeholder="Insert text of your note" class="textarea_text_note">
+                        {{ message }}
+                    </textarea>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if not text %}
+                <textarea name="data" id="editor" cols="30" rows="10" placeholder="Insert text of your note" class="textarea_text_note">{{ note.data }}</textarea>
+            {% endif %}
+        {% endwith %}
+        <br>
+        <br>
+        <button type="submit" class="button_submit">Change note</button>
+    </form>
+</div>
+{% endblock %}

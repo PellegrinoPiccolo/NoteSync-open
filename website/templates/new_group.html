@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}New Group - NoteSync{% endblock %}
+{% block title_page %}Create New Group{% endblock %}
+{% block content %}
+<div class="form_section">
+    <form action="" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Insert name of your group" class="input_title_note">
+        <label for="description">Description</label>
+        {% with text = get_flashed_messages(with_categories=true) %}
+            {% if text %}
+                {% for category, message in text %}
+                {% if category == 'text' %}
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Insert description of your group" class="textarea_text_note" maxlength="400">{{ message }}</textarea>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if not text %}
+                <textarea name="description" id="description" cols="30" rows="10" placeholder="Insert description of your group" class="textarea_text_note" maxlength="400"></textarea>
+            {% endif %}
+        {% endwith %}
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Insert password for your groups">
+        <label for="password2">Confirm Passoword</label>
+        <input type="password" name="password2" id="password2" placeholder="Confirm your password">
+        <br>
+        <br>
+        <button type="submit" class="button_submit">Create group</button>
+    </form>
+</div>
+{% endblock %}
