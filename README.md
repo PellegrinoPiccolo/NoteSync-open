@@ -9,4 +9,4 @@ collaboration by putting your ideas in the spotlight.
 
 NoteSync is an **Open Source** python project for creating notes, customizing them, and sharing them with anyone you want
 
-You can use NoteSync on this link -> https://notesync-lct0.onrender.com/ **It's completely free**
+You can use NoteSync on this link -> https://notesync.it/ **It's completely free**
